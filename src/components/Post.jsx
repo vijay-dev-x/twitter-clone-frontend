@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Avatar from "react-avatar";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllOthersTweets,
-  getIsFollowingTweets,
-  getOtherUsers,
-  getRefresh,
-} from "../redux/UserSlice";
+import { getAllOthersTweets, getRefresh } from "../redux/UserSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { getTimeSinceCreation } from "../customFunc/CutomFunc";
 import { IoIosHeartEmpty } from "react-icons/io";
-import { IoHeart } from "react-icons/io5";
 import { FaRegComment } from "react-icons/fa";
 import { IoMdRepeat } from "react-icons/io";
 import { CiBookmark } from "react-icons/ci";
@@ -46,9 +40,12 @@ export default function Post() {
 
   const LikeDislikeHandler = async (paraId) => {
     try {
-      const res = await axios.put(`http://localhost:8000/api/like/${paraId}`, {
-        id: userId,
-      });
+      const res = await axios.put(
+        `https://twitter-clone-backend-ycez.onrender.com/api/like/${paraId}`,
+        {
+          id: userId,
+        }
+      );
       dispatch(getRefresh(false));
       toast.success(res?.data?.msg);
       console.log("post compo like-", res?.data);
@@ -60,7 +57,7 @@ export default function Post() {
   const deleteHandler = async (paraId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/delete/${paraId}`
+        `https://twitter-clone-backend-ycez.onrender.com/api/delete/${paraId}`
       );
       console.log("deleted-", res);
       dispatch(getRefresh(false));
