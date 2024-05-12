@@ -16,6 +16,8 @@ export default function Feed() {
 
   const [description, setDescription] = useState("");
   const loggedUserId = useSelector((store) => store.user?.user?.user?._id);
+  const userShow = useSelector((store) => store.user.usersShow);
+  console.log(userShow);
 
   const newTweet = async () => {
     if (description === "") {
@@ -74,7 +76,11 @@ export default function Feed() {
     }
   }, [refreshSelector]);
   return (
-    <div className=" px-3 w-[45%] h-[95vh] overflow-y-scroll no-scrollbar ">
+    <div
+      className={` ${
+        userShow ? " hidden " : "block"
+      }px-3 w-[78%] md:w-[45%] h-[95vh] overflow-y-scroll no-scrollbar `}
+    >
       <div className=" flex sticky top-0 bg-white  justify-evenly border-b pb-2">
         <p
           onClick={forYouHandler}
@@ -93,7 +99,7 @@ export default function Feed() {
           Following
         </p>
       </div>
-      <div className=" flex my-3 gap-3">
+      <div className=" flex px-2 my-3 gap-3">
         <img
           className=" w-10 h-10 bg-cover rounded-full"
           src="https://www.imilap.com/profileimages/profile_IMG_20170707_034945_547.jpg"

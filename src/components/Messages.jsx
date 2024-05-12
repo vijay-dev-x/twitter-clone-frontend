@@ -14,7 +14,7 @@ const Messages = () => {
   };
 
   return (
-    <div className=" w-[45%] flex flex-col justify-between p-5">
+    <div className=" w-full md:w-[45%] flex flex-col justify-between p-5">
       <div>
         <div className=" flex w-[100%] items-center justify-between border-b-2 pb-1">
           <div>
@@ -68,8 +68,9 @@ const Messages = () => {
           <input
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            className=" p-3 rounded-3xl border-2 w-[80%]"
+            className=" outline-none p-3 rounded-3xl border-2 w-[80%]"
             type="text"
+            placeholder="message here.."
           />
 
           <p className=" text-3xl cursor-pointer">

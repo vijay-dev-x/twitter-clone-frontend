@@ -106,27 +106,25 @@ export default function Profile() {
 
   return (
     // <h1>hello</h1>
-    <div className=" w-[45%] mt-0">
+    <div className=" w-full md:w-[45%] mt-0">
       <div>
         <div>
           <img
-            className="relative"
+            className="relative "
             src="https://pbs.twimg.com/profile_banners/4482588140/1645885393/1080x360"
             alt=""
           />
         </div>
         <div className=" flex justify-between px-4 items-center">
-          <Avatar
-            className=" relative top-[-15px] border-4 border-white rounded-full"
+          <img
+            className=" w-[6rem] rounded-full md:w-[7.5rem] relative top-[-18px] border-4 border-white"
             src="https://www.imilap.com/profileimages/profile_IMG_20170707_034945_547.jpg"
-            size="140"
-            round
           />
 
           {currentUserId === loggedUser?.user?._id ? (
             <button
               onClick={() => editProfileHandler(loggedUser?.user?._id)}
-              className=" bg-sky-400 text-white font-semibold rounded-3xl px-8 py-3"
+              className=" bg-sky-400 text-white font-semibold rounded-3xl px-4 py-2 md:px-8 md:py-3"
             >
               Edit Profile
             </button>

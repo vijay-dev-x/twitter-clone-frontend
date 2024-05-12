@@ -6,6 +6,7 @@ const initialState = {
   allOthersTweets: null,
   refresh: true,
   followingTweets: false,
+  usersShow: false,
 };
 const UserSlice = createSlice({
   name: "userSlice",
@@ -28,6 +29,9 @@ const UserSlice = createSlice({
     },
     getIsFollowingTweets: (state, action) => {
       state.followingTweets = action.payload;
+    },
+    getUsersShow: (state) => {
+      state.usersShow = !state.usersShow;
     },
     getFollowingUpdate: (state, action) => {
       if (state.user.user.following.includes(action.payload))
@@ -53,5 +57,6 @@ export const {
   getRefresh,
   getIsFollowingTweets,
   getFollowingUpdate,
+  getUsersShow,
 } = UserSlice.actions;
 export default UserSlice.reducer;

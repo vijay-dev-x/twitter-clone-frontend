@@ -60,25 +60,29 @@ export default function Login() {
     setIsLogin(!isLogin);
   };
   return (
-    <div className=" flex w-[100%] p-10 items-center h-[100vh] px-5">
-      <div className="  w-[50%]">
+    <div className=" flex-col md:flex w-[100%] p-10 items-center h-[100vh] px-5">
+      <div className=" w-full  md:w-[50%]">
         <img
-          className=" mx-auto w-[50%]"
+          className=" mx-auto w-[30%] md:w-[50%]"
           src="https://www.edigitalagency.com.au/wp-content/uploads/new-Twitter-logo-x-black-png.png"
           alt=""
         />
       </div>
-      <div className="  w-[50%] ">
+      <div className="  w-full mt-16 md:mt-0 md:w-[50%] ">
         <div className="  flex  flex-col gap-3 items-center">
           <div>
-            <h1 className=" text-[4em] py-5 whitespace-nowrap font-bold">
+            <h1 className=" text-[1.7rem] md:text-[4em] py-2 md:py-5 whitespace-nowrap font-bold">
               Heppening now
             </h1>
 
             {isLogin ? (
-              <h1 className=" text-[2em] text-center font-bold">Login here</h1>
+              <h1 className=" text-[1.2rem] md:text-[2em] text-center font-bold">
+                Login here
+              </h1>
             ) : (
-              <h1 className=" text-[2em] text-center font-bold">Join today</h1>
+              <h1 className=" text-[1.2rem] md:text-[2em] text-center font-bold">
+                Join today
+              </h1>
             )}
           </div>
           <form></form>
