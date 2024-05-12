@@ -60,7 +60,7 @@ export default function Login() {
     setIsLogin(!isLogin);
   };
   return (
-    <div className=" flex-col md:flex w-[100%] p-10 items-center h-[100vh] px-5">
+    <div className=" flex-col md:flex md:flex-row w-[100%] p-10 items-center h-[100vh] px-5">
       <div className=" w-full  md:w-[50%]">
         <img
           className=" mx-auto w-[30%] md:w-[50%]"
