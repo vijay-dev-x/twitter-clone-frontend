@@ -44,17 +44,22 @@ import { TwitterSource } from "react-avatar";
 
 export default function LeftSidebar() {
   const refreshSelector = useSelector((store) => store.user.refresh);
+  const loggedUserId = useSelector((store) => store.user?.user?.user?._id);
+  const userShow = useSelector((store) => store.user.usersShow);
+
   const dispatch = useDispatch();
 
-  const loggedUserId = useSelector((store) => store.user?.user?.user?._id);
   // console.log("left id -", loggedUserId);
   const navigate = useNavigate();
   const goToHomeHandler = () => {
     navigate("/");
+    dispatch(getUsersShow(false));
   };
+  // go to profile
   const goToProfileHandler = () => {
     navigate(`/profile/${loggedUserId}`);
     dispatch(getRefresh(false));
+    dispatch(getUsersShow(false));
   };
   // Logout api ------------
   const logoutApi = async () => {
@@ -83,10 +88,11 @@ export default function LeftSidebar() {
   // go to messgaes-
   const goToMessages = () => {
     navigate("/messages");
+    dispatch(getUsersShow(false));
   };
   // go to users for mobile
   const openUsers = () => {
-    dispatch(getUsersShow(!false));
+    dispatch(getUsersShow(!userShow));
   };
 
   return (

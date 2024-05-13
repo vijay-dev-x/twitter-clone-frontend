@@ -25,27 +25,25 @@ export const ProfileSujjestion = () => {
     dispatch(getRefresh(false));
   };
   return (
-    // <h2>hello2</h2>
     <div className="">
-      {allUsers?.map((value, index) => (
+      {allUsers?.map((value) => (
         <div key={value?._id} className=" my-3 ">
           <div className="   w-[90%] justify-between flex gap-3">
             <div className=" flex gap-4 items-center">
-              {/* <Avatar
-                src="https://www.imilap.com/profileimages/profile_IMG_20170707_034945_547.jpg"
-                size="40"
-                round
-              /> */}
               <h1
-                className=" p-3 uppercase text-center
-               w-[2.5em] h-[2.5em] rounded-full text-xl font-bold bg-sky-300 text-white"
+                className=" p-1 flex justify-center items-center md:p-3 uppercase text-center
+              w-[2.5em] h-[2.5em] rounded-full text-sm md:text-xl font-bold bg-sky-300 text-white"
               >
                 {value?.name.charAt(0)}
               </h1>
 
               <div>
-                <h1 className=" text-xl font-semibold">{value?.name}</h1>
-                <p className=" text-gray-400 mt-[-1px]">@{value?.username}</p>
+                <h1 className=" text-[15px] md:text-xl font-semibold">
+                  {value?.name}
+                </h1>
+                <p className=" text-[12px] text-gray-400 mt-[-1px]">
+                  @{value?.username}
+                </p>
               </div>
             </div>
 
@@ -53,7 +51,7 @@ export const ProfileSujjestion = () => {
               <button
                 onClick={() => goToProfileHandler(value?._id)}
                 // onClick={() => navigate(`/profile/${value?._id}`)}
-                className=" px-5 font-semibold hover:bg-gray-800 py-2 rounded-full bg-gray-700 text-white"
+                className=" px-3 py-1.5 md:px-5 font-semibold hover:bg-gray-800 md:py-2 rounded-full bg-gray-700 text-sm md:text-lg text-white"
               >
                 Profile
               </button>

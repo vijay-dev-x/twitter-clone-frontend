@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "react-avatar";
 import { ProfileSujjestion } from "../components/ProfileSujjestion";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function RightSidebar() {
   const userShow = useSelector((store) => store.user.usersShow);
@@ -10,7 +10,7 @@ export default function RightSidebar() {
     <div
       className={` ${
         userShow ? "block" : " hidden"
-      }  w-[78%] md:block md:w-[30%] border-2 h-[100vh] no overflow-y-scroll p-7`}
+      }  w-[78%] md:block md:w-[30%] border-2 h-[100vh] no overflow-y-scroll p-2 md:p-7`}
     >
       <div>
         <input

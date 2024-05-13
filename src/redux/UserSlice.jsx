@@ -30,8 +30,8 @@ const UserSlice = createSlice({
     getIsFollowingTweets: (state, action) => {
       state.followingTweets = action.payload;
     },
-    getUsersShow: (state) => {
-      state.usersShow = !state.usersShow;
+    getUsersShow: (state, action) => {
+      state.usersShow = action.payload;
     },
     getFollowingUpdate: (state, action) => {
       if (state.user.user.following.includes(action.payload))

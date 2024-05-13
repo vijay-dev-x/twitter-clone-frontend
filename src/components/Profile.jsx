@@ -10,7 +10,7 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 export default function Profile() {
   const refreshSelector = useSelector((store) => store.user.refresh);
   const loggedUser = useSelector((store) => store.user.idUser);
-  // console.log("logged user", loggedUser);
+  const userShow = useSelector((store) => store.user.usersShow);
   const currentUserId = useSelector((store) => store?.user?.user?.user?._id);
   const navigate = useNavigate();
 
@@ -105,63 +105,64 @@ export default function Profile() {
   }, [refreshSelector, id]);
 
   return (
-    // <h1>hello</h1>
-    <div className=" w-full md:w-[45%] mt-0">
-      <div>
+    !userShow && (
+      <div className=" w-full md:w-[45%] mt-0">
         <div>
-          <img
-            className="relative "
-            src="https://pbs.twimg.com/profile_banners/4482588140/1645885393/1080x360"
-            alt=""
-          />
-        </div>
-        <div className=" flex justify-between px-4 items-center">
-          <img
-            className=" w-[6rem] rounded-full md:w-[7.5rem] relative top-[-18px] border-4 border-white"
-            src="https://www.imilap.com/profileimages/profile_IMG_20170707_034945_547.jpg"
-          />
+          <div>
+            <img
+              className="relative "
+              src="https://pbs.twimg.com/profile_banners/4482588140/1645885393/1080x360"
+              alt=""
+            />
+          </div>
+          <div className=" flex justify-between px-4 items-center">
+            <img
+              className=" w-[6rem] rounded-full md:w-[7.5rem] relative top-[-18px] border-4 border-white"
+              src="https://www.imilap.com/profileimages/profile_IMG_20170707_034945_547.jpg"
+            />
 
-          {currentUserId === loggedUser?.user?._id ? (
-            <button
-              onClick={() => editProfileHandler(loggedUser?.user?._id)}
-              className=" bg-sky-400 text-white font-semibold rounded-3xl px-4 py-2 md:px-8 md:py-3"
-            >
-              Edit Profile
-            </button>
-          ) : (
-            // --------------------------------------------
-            <button
-              onClick={followUnfollowHandler}
-              className=" bg-sky-400 text-white hover:bg-sky-500 font-bold rounded-3xl px-10 py-3"
-            >
-              {currentUser?.following.includes(id) ? "Unfollow" : "Follow"}
-            </button>
-          )}
-        </div>
-        <div className=" px-6">
-          <h1 className=" text-xl font-semibold">{loggedUser?.user?.name}</h1>
-          <p className=" text-gray-400">@{loggedUser?.user?.username}</p>
-        </div>
-        <div className=" px-5 py-2 ">
-          <p className=" text-[16px] text-gray-400 flex items-center gap-2">
-            <span className=" text-gray-400">
-              <MdOutlineCalendarMonth></MdOutlineCalendarMonth>
-            </span>{" "}
-            Joined {formatDate(loggedUser?.user?.createdAt)}
-          </p>
-        </div>
-        <div className=" flex gap-5 my-4 px-5">
-          <p className=" text-xl">
-            {" "}
-            {loggedUser?.user?.following.length}{" "}
-            <span className=" text-gray-500">Following</span>
-          </p>
-          <p className=" text-xl">
-            {loggedUser?.user?.followers.length}{" "}
-            <span className=" text-gray-500"> Followers </span>{" "}
-          </p>
+            {currentUserId === loggedUser?.user?._id ? (
+              <button
+                onClick={() => editProfileHandler(loggedUser?.user?._id)}
+                className=" bg-sky-400 text-white font-semibold rounded-3xl px-4 py-2 md:px-8 md:py-3"
+              >
+                Edit Profile
+              </button>
+            ) : (
+              // --------------------------------------------
+              <button
+                onClick={followUnfollowHandler}
+                className=" bg-sky-400 text-white hover:bg-sky-500 font-bold rounded-3xl px-10 py-3"
+              >
+                {currentUser?.following.includes(id) ? "Unfollow" : "Follow"}
+              </button>
+            )}
+          </div>
+          <div className=" px-6">
+            <h1 className=" text-xl font-semibold">{loggedUser?.user?.name}</h1>
+            <p className=" text-gray-400">@{loggedUser?.user?.username}</p>
+          </div>
+          <div className=" px-5 py-2 ">
+            <p className=" text-[16px] text-gray-400 flex items-center gap-2">
+              <span className=" text-gray-400">
+                <MdOutlineCalendarMonth></MdOutlineCalendarMonth>
+              </span>{" "}
+              Joined {formatDate(loggedUser?.user?.createdAt)}
+            </p>
+          </div>
+          <div className=" flex gap-5 my-4 px-5">
+            <p className=" text-xl">
+              {" "}
+              {loggedUser?.user?.following.length}{" "}
+              <span className=" text-gray-500">Following</span>
+            </p>
+            <p className=" text-xl">
+              {loggedUser?.user?.followers.length}{" "}
+              <span className=" text-gray-500"> Followers </span>{" "}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 }
